@@ -10,7 +10,7 @@
 // // // // // // // //                     <Link to="/process" className="text-[25px] font-bold text-white">Process</Link>
 // // // // // // // //                 </div>
 // // // // // // // //                 <div className=''>
-                    
+
 // // // // // // // //                 </div>
 // // // // // // // //             </div>
 // // // // // // // //         </div>
@@ -681,8 +681,8 @@ export default function Process() {
   const total = cart.reduce((sum, item) => sum + item.quantity * parseInt(item.price), 0);
 
   const sendToTelegram = () => {
-    const botToken = '7537686168:AAFrKzV2hmvW2VFlRD7vH0Ypw46PpRdEDHI'; // Replace with your bot token
-    const chatId = '6536432455';     // Replace with your chat ID
+    const botToken = '7537686168:AAFrKzV2hmvW2VFlRD7vH0Ypw46PpRdEDHI';
+    const chatId = '6536432455';
 
     const orderList = cart.map((item, index) =>
       `${index + 1}. 🍽 ${item.name} - ${item.quantity} dona (${item.quantity * item.price} so‘m)`
@@ -700,15 +700,15 @@ export default function Process() {
         text: message,
       })
     })
-    .then(() => {
-      alert("Buyurtma yuborildi!");
-      localStorage.removeItem('cart');
-      setCart([]);
-    })
-    .catch((err) => {
-      alert("Xatolik yuz berdi!");
-      console.error(err);
-    });
+      .then(() => {
+        alert("Buyurtma yuborildi!");
+        localStorage.removeItem('cart');
+        setCart([]);
+      })
+      .catch((err) => {
+        alert("Xatolik yuz berdi!");
+        console.error(err);
+      });
   };
 
   const removeItem = (id) => {
