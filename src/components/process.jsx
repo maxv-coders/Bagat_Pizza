@@ -718,13 +718,13 @@ export default function Process() {
   };
 
   return (
-    <div className='bg-orange-400 min-h-screen'>
+    <div className='bg-white min-h-screen'>
       <div className="container mx-auto px-4">
         <div className='text-center justify-center py-8 flex gap-10'>
-          <Link to="/" className="text-[25px] font-bold text-white">Menu</Link>
-          <Link to="/process" className="text-[25px] font-bold text-white">Process</Link>
+          <Link to="/" className="text-[25px] font-bold text-black">Menu</Link>
+          <Link to="/process" className="text-[25px] font-bold text-black">Process</Link>
         </div>
-        <div className="bg-white p-5 max-w-xl mx-auto rounded shadow">
+        <div className="bg-white p-5 max-w-xl mx-auto rounded shadow-md border-[5px]">
           <h2 className="text-xl font-semibold mb-4">🛒 Savatchadagi mahsulotlar</h2>
           {cart.length === 0 ? (
             <p>Mahsulot yo‘q</p>

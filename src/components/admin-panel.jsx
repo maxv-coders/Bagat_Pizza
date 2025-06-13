@@ -61,8 +61,8 @@ export default function AdminPanel({ addProduct, products = [], deleteProduct })
 
   if (!isAuthorized) {
     return (
-      <div className="min-h-screen bg-orange-100 flex items-center justify-center">
-        <div className="bg-white p-8 rounded shadow-md w-[300px] text-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="bg-white p-8 rounded shadow-md w-[300px] text-center border-[5px]">
           <h2 className="text-xl font-bold mb-4">🔐 Admin Panelga kirish</h2>
           <input
             type="password"
