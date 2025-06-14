@@ -401,15 +401,14 @@
 
 
 
-
-
-
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import Logo from '../assets/pizzalogo.png';
 
 export default function Menu({ products }) {
   const [counts, setCounts] = useState({});
   const [cart, setCart] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     const savedCart = localStorage.getItem('cart');
@@ -421,51 +420,66 @@ export default function Menu({ products }) {
   }, [cart]);
 
   const increment = (id) => {
-    setCounts(prev => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
+    const updatedCounts = { ...counts, [id]: (counts[id] || 0) + 1 };
+    setCounts(updatedCounts);
+
+    const product = products.find(p => p.id === id);
+    const updatedCart = [...cart];
+    const index = updatedCart.findIndex(item => item.id === id);
+    if (index >= 0) {
+      updatedCart[index].quantity += 1;
+    } else {
+      updatedCart.push({ ...product, quantity: 1 });
+    }
+    setCart(updatedCart);
   };
 
   const decrement = (id) => {
-    setCounts(prev => ({ ...prev, [id]: Math.max((prev[id] || 0) - 1, 0) }));
-  };
+    const currentCount = counts[id] || 0;
+    if (currentCount === 0) return;
 
-  const addAllToCart = () => {
+    const updatedCounts = { ...counts, [id]: currentCount - 1 };
+    setCounts(updatedCounts);
+
     const updatedCart = [...cart];
-    products.forEach(product => {
-      const quantity = counts[product.id] || 0;
-      if (quantity === 0) return;
-
-      const index = updatedCart.findIndex(item => item.id === product.id);
-      if (index >= 0) {
-        updatedCart[index].quantity += quantity;
+    const index = updatedCart.findIndex(item => item.id === id);
+    if (index >= 0) {
+      if (updatedCart[index].quantity > 1) {
+        updatedCart[index].quantity -= 1;
       } else {
-        updatedCart.push({ ...product, quantity });
+        updatedCart.splice(index, 1);
       }
-    });
-
-    setCart(updatedCart);
-    setCounts({});
+      setCart(updatedCart);
+    }
   };
+
+  const totalCount = Object.values(counts).reduce((sum, count) => sum + count, 0);
 
   return (
-    <div className='bg-[#fff] min-h-screen'>
+    <div className='bg-[#fff] min-h-screen pb-[80px]'>
       <div className="container mx-auto px-4">
-        <div className='text-center items-center justify-center py-8 flex gap-16'>
-          <Link to="/" className="text-[25px] font-bold text-black">Menu</Link>
-          {/* <h1 className='text-[50px] font-bold font-serif'>Bagat Pizza</h1> */}
-          <Link to="/cart" className="text-[25px] font-bold text-black">Savat</Link>
+        <div className='text-center items-center justify-between py-8 flex'>
+          <div className='flex items-center gap-2'>
+            <img src={Logo} className='w-[50px]' alt="" />
+            <h1 className='text-[35px] font-medium'>BAGAT PIZZA</h1>
+          </div>
+          <div className='flex gap-[20px]'>
+            <Link to="/" className="text-[20px] font-bold px-6 py-1 rounded bg-orange-400 text-white">Menu</Link>
+            {/* <Link to="/cart" className="text-[20px] font-bold px-6 py-1 rounded bg-orange-400 text-white">Savat</Link> */}
+          </div>
         </div>
 
         <div className='flex flex-wrap gap-5 justify-center pb-20'>
           {products.map(product => (
-            <div key={product.id} className='w-[250px] h-[400px] p-[25px] rounded-md bg-white border-[5px] shadow-md'>
+            <div key={product.id} className='w-[270px] p-[25px] rounded-[50px] bg-white shadow-2xl flex flex-col items-center'>
               <img
                 src={product.image}
                 alt={product.name}
-                className='w-[190px] h-[180px] object-cover rounded mb-1'
+                className='w-[190px] h-[180px] object-cover rounded-[30px] mb-1'
               />
               <div className='space-y-1 flex flex-col items-center'>
-                <h3 className='text-[30px] font-bold'>{product.name}</h3>
-                <h3 className='text-green-700 font-semibold text-[20px]'>{product.price} so‘m</h3>
+                <h3 className='text-[28px] font-bold'>{product.name}</h3>
+                <h3 className='text-green-700 font-semibold text-[18px]'>{product.price} so‘m</h3>
                 <div className='flex justify-center items-center gap-3 pt-2'>
                   <button
                     onClick={() => decrement(product.id)}
@@ -481,15 +495,25 @@ export default function Menu({ products }) {
             </div>
           ))}
         </div>
+      </div>
 
-        <div className='flex justify-center pb-10'>
+      {/* Fixed Button */}
+      <div className='fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50'>
+        {totalCount === 0 ? (
           <button
-            onClick={addAllToCart}
-            className='bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded'
+            disabled
+            className='bg-gray-400 text-white font-semibold px-8 py-5 rounded shadow-2xl cursor-not-allowed'
           >
-            Savatchaga barchasini qo‘shish
+            Savatni ochish
           </button>
-        </div>
+        ) : (
+          <button
+            onClick={() => history.push('/cart')}
+            className='bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-5 rounded shadow-2xl'
+          >
+            Savatni ochish
+          </button>
+        )}
       </div>
     </div>
   );
