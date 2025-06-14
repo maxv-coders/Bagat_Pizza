@@ -101,7 +101,7 @@ export default function Process() {
   };
 
   return (
-    <div className='bg-white min-h-screen'>
+    <div className='bg-white min-h-screen pr-4'>
       <div className="container mx-auto px-4">
         <div className='text-center items-center justify-between py-8 flex'>
           <div className='flex items-center gap-2'>
