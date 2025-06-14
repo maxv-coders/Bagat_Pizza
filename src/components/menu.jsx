@@ -449,9 +449,10 @@ export default function Menu({ products }) {
   return (
     <div className='bg-[#fff] min-h-screen'>
       <div className="container mx-auto px-4">
-        <div className='text-center justify-center py-8 flex gap-10'>
+        <div className='text-center items-center justify-center py-8 flex gap-16'>
           <Link to="/" className="text-[25px] font-bold text-black">Menu</Link>
-          <Link to="/process" className="text-[25px] font-bold text-black">Process</Link>
+          {/* <h1 className='text-[50px] font-bold font-serif'>Bagat Pizza</h1> */}
+          <Link to="/cart" className="text-[25px] font-bold text-black">Savat</Link>
         </div>
 
         <div className='flex flex-wrap gap-5 justify-center pb-20'>

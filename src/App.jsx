@@ -35,7 +35,7 @@ export default function App() {
         <Route exact path="/">
           <Menu products={products} />
         </Route>
-        <Route path="/process" component={Process} />
+        <Route path="/cart" component={Process} />
         <Route path="/admin">
           <AdminPanel
             products={products}

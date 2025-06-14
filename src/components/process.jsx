@@ -1017,7 +1017,7 @@ export default function Process() {
       <div className="container mx-auto px-4">
         <div className='text-center justify-center py-8 flex gap-10'>
           <Link to="/" className="text-[25px] font-bold text-black">Menu</Link>
-          <Link to="/process" className="text-[25px] font-bold text-black">Process</Link>
+          <Link to="/cart" className="text-[25px] font-bold text-black">Savat</Link>
         </div>
         <div className="bg-white p-5 max-w-xl mx-auto rounded shadow-md border-[5px]">
           <h2 className="text-xl font-semibold mb-4">🛒 Savatchadagi mahsulotlar</h2>
