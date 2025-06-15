@@ -30,3 +30,4 @@ const Cart = ({ cart, onOrder }) => {
 };
 
 export default Cart;
+
