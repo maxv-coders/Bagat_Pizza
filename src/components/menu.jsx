@@ -591,7 +591,6 @@
 
 
 
-
 import React, { useState, useEffect } from "react";
 import Logo from "../assets/pizzalogo.png";
 
@@ -833,9 +832,19 @@ export default function Menu() {
           </button>
         </div>
       </footer>
+
+      {/* Cart Modal with Close (X) button */}
       {showCart && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-xl max-w-lg w-full">
+          <div className="bg-white p-6 rounded-lg shadow-xl max-w-lg w-full relative">
+            <button
+              onClick={() => setShowCart(false)}
+              className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 text-xl font-bold"
+              aria-label="Close cart"
+            >
+              ×
+            </button>
+
             <h2 className="text-xl font-bold mb-4">Savat</h2>
             {cart.length === 0 ? (
               <p>Mahsulot yo‘q</p>
@@ -889,6 +898,8 @@ export default function Menu() {
           </div>
         </div>
       )}
+
+      {/* Selected Product Modal with Close (X) button */}
       {selectedProduct && (
         <div
           onClick={() => setSelectedProduct(null)}
@@ -896,8 +907,16 @@ export default function Menu() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full"
+            className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full relative"
           >
+            <button
+              onClick={() => setSelectedProduct(null)}
+              className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 text-xl font-bold"
+              aria-label="Close product details"
+            >
+              ×
+            </button>
+
             <h3 className="text-2xl font-bold mb-4">{selectedProduct.name}</h3>
             <img
               src={selectedProduct.image}
