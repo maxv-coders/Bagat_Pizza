@@ -181,7 +181,7 @@
 
 import React, { useState, useEffect } from "react";
 
-const categories = ["burger", "ichimlik", "desert", "combo"];
+const categories = ["burger", "ichimlik", "desert", "combo", 'pizza', 'hod-dog'];
 
 export default function AdminPanel() {
   const [products, setProducts] = useState([]);

@@ -595,7 +595,7 @@
 import React, { useState, useEffect } from "react";
 import Logo from "../assets/pizzalogo.png";
 
-const categories = ["all", "burger", "ichimlik", "desert", "combo"];
+const categories = ["all", "burger", "ichimlik", "desert", "combo", "pizza", "hod-dog"];
 
 export default function Menu() {
   const [products, setProducts] = useState([]);
@@ -622,7 +622,6 @@ export default function Menu() {
     if (savedCart) {
       const parsedCart = JSON.parse(savedCart);
       setCart(parsedCart);
-      // counts ni ham tiklash uchun:
       const countsObj = {};
       parsedCart.forEach((item) => {
         countsObj[item.id] = item.quantity;
@@ -795,7 +794,7 @@ export default function Menu() {
                     e.stopPropagation();
                     decrement(product.id);
                   }}
-                  className="w-10 h-10 bg-gray-300 hover:bg-gray-400 rounded-full text-xl font-bold"
+                  className="w-10 h-10 bg-gray-300 pb-1  hover:bg-gray-400 rounded-full text-xl font-bold"
                 >
                   −
                 </button>
@@ -805,7 +804,7 @@ export default function Menu() {
                     e.stopPropagation();
                     increment(product.id);
                   }}
-                  className="w-10 h-10 bg-red-600 hover:bg-red-700 text-white rounded-full text-xl font-bold"
+                  className="w-10 h-10 bg-red-600 hover:bg-red-700 text-white pb-1   rounded-full text-xl font-bold"
                 >
                   +
                 </button>
