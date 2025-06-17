@@ -938,7 +938,7 @@ export default function Menu() {
             placeholder="Izlash..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="rounded-full px-5 py-2 text-lg w-full max-w-xs sm:max-w-md md:max-w-lg text-black placeholder-gray-500 shadow-inner"
+            className="rounded-full px-5 py-2 text-lg w-full max-w-[150px] outline-none text-black placeholder-gray-500 shadow-inner"
           />
         </header>
         <div className="flex flex-wrap justify-center gap-3 py-4 bg-gray-100">
