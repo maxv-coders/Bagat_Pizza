@@ -101,8 +101,8 @@
 //     const newCustomerNumber = customerCount + 1;
 //     localStorage.setItem("customerCount", newCustomerNumber);
 
-//     const botToken = "7537686168:AAFrKzV2hmvW2VFlRD7vH0Ypw46PpRdEDHI"; 
-//     const chatId = "@bagat_pizza_n1"; 
+//     const botToken = "7537686168:AAFrKzV2hmvW2VFlRD7vH0Ypw46PpRdEDHI";
+//     const chatId = "@bagat_pizza_n1";
 
 //     const orderList = cart
 //       .map(
@@ -928,7 +928,7 @@ export default function Menu() {
     <div className="bg-white min-h-screen flex">
       {/* Main content */}
       <div className="flex-1 pb-36 md:mr-80">
-        <header className="bg-red-600 text-white py-5 px-6 flex flex-col sm:flex-row justify-between items-center shadow-lg gap-4">
+        <header className="bg-red-600 text-white py-5 px-6 flex flex-col lg:flex-row justify-between items-center shadow-lg gap-4">
           <div className="flex items-center gap-4">
             <img src={Logo} className="w-14" alt="Logo" />
             <h1 className="text-3xl font-extrabold uppercase tracking-wider whitespace-nowrap">Bagat Pizza</h1>
