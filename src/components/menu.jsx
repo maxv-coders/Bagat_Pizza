@@ -1120,7 +1120,7 @@ export default function Menu() {
             </div>
             <button
               onClick={sendToTelegram}
-              className="mt-5 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded font-bold"
+              className="mt-5 w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded font-bold"
             >
               Buyurtma berish
             </button>
